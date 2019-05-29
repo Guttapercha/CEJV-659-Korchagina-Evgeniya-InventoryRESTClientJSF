@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>#{info.list}</title>
+            <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+            <script src="https://use.fontawesome.com/4ecc3dbb0b.js" type="text/javascript" charset="utf-8"></script>
+            <h:outputStylesheet library="css" name="style.css"/>
+        </h:head>
+
+        <h:body>
+<!--            <div>
+                <img src = "resources/images/bg.jpg" class = "bg_img_list" id="list"/>
+            </div>   -->
+            <h3>#{info.welcome}  #{user.firstname}  #{user.lastname}!</h3>
+            <h2>#{info.list}</h2>
+            <br></br><br></br>
+            <div class="form_users">
+
+                <h:form id="form">
+                    <p:dataTable value="#{inventoryController.findUserByEmail(user.email)}" var="inv"
+                                 a:reflow="true" styleClass="list">
+                        <p:column headerText="#{info.album}">
+                            <h:outputText value="#{inv.album}"/>
+                        </p:column>
+                        <p:column headerText="#{info.artist}">
+                            <h:outputText value="#{inv.artist}"/>
+                        </p:column >
+                        <p:column headerText="#{info.year}"   style="width:30px;">
+                            <h:outputText value="#{inv.year}"/>
+                        </p:column>
+                        <p:column headerText="#{info.state}"   style="width: 30px;">
+                            <h:outputText value="#{inv.state}"/>
+                        </p:column>
+                        <p:column headerText="#{info.details}">
+                            <h:outputText value="#{inv.state_detailed}"/>
+                        </p:column>
+                        <p:column headerText="#{info.notes}">
+                            <h:outputText value="#{inv.notes}"/>
+                        </p:column>
+                        <p:column  style="width:80px;">
+                            <p:commandButton type="submit" value="#{info.btn_update}"  
+                                             action="#{inventoryController.update(inv.id)}" 
+                                             class="btn_table" style="background: blue; color: white;"/>
+                        </p:column>
+                        <p:column  style="width:80px;">
+                            <p:commandButton type="submit" value="#{info.btn_delete}"  update="form"
+                                             action="#{inventoryController.delete(inv, inv.id)}" 
+                                             class="btn_table"  style="background: red; color: white;"/>                                
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                <p:commandButton type="submit" value="#{info.btn_add}"  action="addRecord.xhtml" 
+                                 style="background: green; color:white;"/>
+                <br></br><br/>
+                <p:commandButton type="submit" value="#{info.btn_signout}"  action="#{inventoryController.signout()}" 
+                                 style="background: blue; color: white;"/>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

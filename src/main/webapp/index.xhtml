@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title>#{info.title}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <h:outputStylesheet library="css" name="style2.css"/>
+        </h:head>
+        <h:body>
+
+
+            <div class="w3-center w3-padding-64 w3-light-grey">
+                <h1>#{info.title}</h1>
+            </div>
+
+            <div class="flex">
+                <h:form> 
+                    <p:commandButton type="submit" value="#{info.signup}" 
+                                     action="login.xhtml" class="flex-item"/> 
+                </h:form>           
+                <h:form> 
+                    <p:commandButton type="submit" value="#{info.signin}" 
+                                     action="registration.xhtml" class="flex-item"/> 
+                </h:form>   
+
+            </div> 
+            <br />
+        </h:body>
+    </f:view>
+</html>

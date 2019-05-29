@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>Update Record Form</title>
+            <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+            <script src="https://use.fontawesome.com/4ecc3dbb0b.js" type="text/javascript" charset="utf-8"></script>
+            <h:outputStylesheet library="css" name="style.css"/>
+        </h:head>
+
+        <h:body>
+            <div>
+                <img src = "resources/images/bg.jpg" class = "bg_img"/>
+            </div>
+            <div class="form_wrapper">
+                <div class="form_container">
+                    <div class="title_container">
+                        <h2>#{info.updateRecordform}</h2>
+                    </div>                    
+
+                    <h:form >
+                        <div class="row clearfix">
+                            <label>  #{info.album}</label>
+                            <div class="input_field">
+                                <h:inputText id="album" required="required" value="#{inventory.album}"/>
+                                <p:message for="album" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.artist}</label>
+                            <div class="input_field">
+                                <h:inputText id="artist" required="required" value="#{inventory.artist}"/>
+                                <p:message for="artist" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.year}</label>
+                            <div class="input_field">
+                                <h:inputText id="year" required="required" value="#{inventory.year}"/>
+                                <p:message for="year" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.state}</label>
+                            <div class="input_field">
+                                <h:inputText id="state" required="required" value="#{inventory.state}"/>
+                                <p:message for="state" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.details}</label>
+                            <div class="input_field">
+                                <h:inputText id="details" required="required" value="#{inventory.state_detailed}"/>
+                                <p:message for="details" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.upc}</label>
+                            <div class="input_field">
+                                <h:inputText id="upc" required="required" value="#{inventory.upc}"/>
+                                <p:message for="upc" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <div class="row clearfix">
+                            <label>  #{info.notes}</label>
+                            <div class="input_field">
+                                <h:inputText id="notes" required="required" value="#{inventory.notes}"/>
+                                <p:message for="notes" style="color:red"/>
+                            </div>                                
+                        </div>
+                        <p style="color:green">#{addRecordController.ok}</p>
+                        <p style="color:red">#{addRecordController.failed}</p>
+                        <h:commandButton type="submit" value="#{info.submit}" 
+                                         action="#{updateRecordController.update(inventory)}"/><br/><br/>
+                    </h:form>  
+                    <h:form>                        
+                        <p:commandButton type="submit" value="#{info.back}" action="inventory.xhtml" class="btn"/>
+                        #{inventoryController.inform}
+                        <p style="color:red">#{addRecordController.validation}</p>
+                    </h:form>                    
+                </div>
+            </div>
+        </h:body>
+    </f:view>
+</html>

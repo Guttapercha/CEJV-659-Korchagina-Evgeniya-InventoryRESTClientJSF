@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>Registration Form</title>
+            <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+            <script src="https://use.fontawesome.com/4ecc3dbb0b.js" type="text/javascript" charset="utf-8"></script>
+            <h:outputStylesheet library="css" name="style.css"/>
+        </h:head>
+
+        <h:body>
+            <div>
+                <img src = "resources/images/bg.jpg" class = "bg_img"/>
+            </div>
+            <div class="form_wrapper">
+                <div class="form_container">
+                    <div class="title_container">
+                        <h2>#{info.signupform}</h2>
+                    </div>                    
+
+                    <h:form>
+                        <div class="row clearfix">
+                            <div class="col_half">
+                                <label>#{info.firstname}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                    <h:inputText id="first_name" a:placeholder="John" required="required" 
+                                                 value="#{user.firstname}"/>
+                                    <p:message for="first_name" style="color:red"/>
+                                </div>
+                            </div>
+                            <div class="col_half">
+                                <label>#{info.lastname}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                    <h:inputText id="last_name" a:placeholder="Doe" required="#{info.required}"
+                                                 value="#{user.lastname}"/>
+                                    <p:message for="last_name" style="color:red"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col_half">
+                                <label>#{info.street}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                    <h:inputText id="street_address" a:placeholder="123 Queen Mary" required="#{info.required}" 
+                                                 value="#{user.street}"/>
+                                    <p:message for="street_address" style="color:red"/>
+                                </div>
+                            </div>
+                            <div class="col_half">
+                                <label>#{info.city}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                    <h:inputText id="city" a:placeholder="Montreal" required="#{info.required}"
+                                                 value="#{user.city}"/>
+                                    <p:message for="city" style="color:red"/>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="row clearfix">
+                            <div class="col_half">
+                                <label>#{info.province}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                    <h:inputText id="province" a:placeholder="QC" required="#{info.required}" 
+                                                 value="#{user.province}"/>
+                                    <p:message for="province" style="color:red"/>
+                                </div>
+                            </div>
+                            <div class="col_half">
+                                <label>#{info.country}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                    <h:inputText id="country" a:placeholder="Canada" required="#{info.required}"
+                                                 value="#{user.country}"/>
+                                    <p:message for="country" style="color:red"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col_half">
+                                <label>#{info.postalcode}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+                                    <h:inputText id="postal_code" a:placeholder="H3R T1S" required="#{info.required}" 
+                                                 value="#{user.postal}"/>
+                                    <p:message for="postal_code" style="color:red"/>
+                                </div>
+                            </div>
+                            <div class="col_half">
+                                <label>#{info.email}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                    <h:inputText id="email_address" a:placeholder="john@gmail.com" required="#{info.required}"
+                                                 value="#{user.email}"/>
+                                    <p:message for="email_address" style="color:red"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col_half">
+                                <label>#{info.password}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-key"></i></span>
+                                    <h:inputSecret id="password" required="#{info.required}" 
+                                                   value="#{user.password}" />
+                                    <p:message for="password" style="color:red"/>
+                                </div>
+                            </div>
+                            <div class="col_half">
+                                <label>#{info.confirm}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-key"></i></span>
+                                    <h:inputSecret id="password2" required="#{info.required}" 
+                                                   value="#{signupController.password2}"/>
+                                    <p:message for="password2" style="color:red"/>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color:red">#{signupController.emailinuse}</p>
+                        <p style="color:green">#{signupController.ok}</p>
+                        <p style="color:red">#{signupController.passwordmatch}</p>
+
+                        <h:commandButton type="submit" value="#{info.submit}" 
+                                         action="#{signupController.signup(user)}"/><br/><br/>
+                    </h:form>  
+                    <h:form>                        
+                        <p:commandButton type="submit" value="#{info.back}"  action="index.xhtml" class="btn"/>
+                    </h:form>                    
+                </div>
+            </div>
+        </h:body>
+    </f:view>
+</html>

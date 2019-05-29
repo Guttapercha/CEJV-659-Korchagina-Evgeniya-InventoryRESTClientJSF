@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>Login Form</title>
+            <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+            <script src="https://use.fontawesome.com/4ecc3dbb0b.js" type="text/javascript" charset="utf-8"></script>
+            <h:outputStylesheet library="css" name="style.css"/>
+        </h:head>
+
+        <h:body>
+            <div>
+                <img src = "resources/images/bg.jpg" class = "bg_img"/>
+            </div>
+            <div class="form_wrapper">
+                <div class="form_container">
+                    <div class="title_container">                        
+                        <h2>#{info.loginform}</h2>
+                    </div>
+                    <h:form>
+
+                        <div class="row clearfix">
+                            <div>
+                                <label>#{info.email}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                    <h:inputText a:placeholder="john@gmail.com" required="#{info.required}"
+                                           value="#{loginController.email}"/>
+                                </div>
+                            </div>
+                        </div>        
+
+                        <div class="row clearfix">
+                            <div>
+                                <label>#{info.password}</label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-key"></i></span>
+                                    <h:inputSecret required="#{info.required}" 
+                                           value="#{loginController.password}"/>
+                                </div>
+                            </div>
+                        </div>       
+                        <p style="color:red">#{loginController.login}</p>
+                        
+                        <h:commandButton type="submit" value="#{info.submit}" 
+                               action="#{loginController.login(loginController.email, loginController.password)}"/> <br/><br/>      
+
+                    </h:form>
+                    <h:form>
+                        <p:commandButton type="submit" value="#{info.reg}" action="registration.xhtml" class="btn"/><br/><br/>
+                    </h:form>
+                    <h:form>                        
+                        <p:commandButton type="submit" value="#{info.back}"  action="index.xhtml" class="btn"/>
+                    </h:form>
+                </div>
+            </div>
+        </h:body>
+    </f:view>
+</html>
