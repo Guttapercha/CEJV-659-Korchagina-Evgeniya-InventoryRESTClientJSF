@@ -30,6 +30,9 @@ public class SignupController implements Serializable {
     @Inject
     private UserController uc;
 
+    @Inject
+    private Users u;
+
     public String getPasswordmatch() {
         return passwordmatch;
     }
@@ -68,6 +71,10 @@ public class SignupController implements Serializable {
             this.passwordmatch = "Passwords do not match";
             valid = false;
         }
+        if (password.trim().equals("")) {
+            this.passwordmatch = "Empty password!";
+            valid = false;
+        }
         return valid;
     }
 
@@ -94,6 +101,23 @@ public class SignupController implements Serializable {
         }
         return valid;
     }
+    public void setToEmpty() {
+        u.setFirstname("");
+        u.setLastname("");
+        u.setStreet("");
+        u.setCity("");
+        u.setCountry("");
+        u.setProvince("");
+        u.setFirstname("");
+        u.setPostal("");
+        u.setEmail("");        
+    }
+    
+    public String goToRegistration () {
+        setToEmpty();
+        return "registration";
+    }
+   
 
     /**
      * Perform email check and if successful then move on to registration.xhtml
@@ -105,9 +129,10 @@ public class SignupController implements Serializable {
         if (isValidEmail(user) && isValidPassword(user)) {
             uc.signup(user);
             this.ok = "Success!";
+            setToEmpty();
             return null;
-        }
+        } 
         return null;
     }
-
+    
 }

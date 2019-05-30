@@ -3,6 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.xml.bind.annotation.XmlRootElement;
 

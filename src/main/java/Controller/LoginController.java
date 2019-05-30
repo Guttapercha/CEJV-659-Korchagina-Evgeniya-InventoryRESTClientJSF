@@ -58,6 +58,12 @@ public class LoginController implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+     
+    public String goToLogin () {
+        this.email = "";
+        this.password = "";
+        return "login";
+    }
 
     /**
      * Verifying credentials (email and passsword) based on db record data

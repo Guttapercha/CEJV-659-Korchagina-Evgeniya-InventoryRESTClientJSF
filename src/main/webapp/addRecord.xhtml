@@ -50,17 +50,24 @@
                         <div class="row clearfix">
                             <label>  #{info.state}</label>
                             <div class="input_field">
-                                <h:inputText id="state" required="required" value="#{inventory.state}"/>
-                                <p:message for="state" style="color:red"/>
+                                <h:selectOneMenu value="#{inventory.state}">
+                                    <f:selectItem itemValue="M" itemLabel="M - Mint"/>
+                                    <f:selectItem itemValue="NM" itemLabel="NM - Near Mint"/>
+                                    <f:selectItem itemValue="E" itemLabel="E - Excellent"/>
+                                    <f:selectItem itemValue="VG+" itemLabel="VG+ - Very Goog Plus"/>
+                                    <f:selectItem itemValue="VG" itemLabel="VG - Very Good"/>
+                                    <f:selectItem itemValue="G" itemLabel="G - Good"/>
+                                    <f:selectItem itemValue="P" itemLabel="P -Poor"/>
+                                </h:selectOneMenu>
                             </div>                                
                         </div>
-                        <div class="row clearfix">
+<!--                        <div class="row clearfix">
                             <label>  #{info.details}</label>
                             <div class="input_field">
                                 <h:inputText id="details" required="required" value="#{inventory.state_detailed}"/>
                                 <p:message for="details" style="color:red"/>
                             </div>                                
-                        </div>
+                        </div>-->
                         <div class="row clearfix">
                             <label>  #{info.upc}</label>
                             <div class="input_field">

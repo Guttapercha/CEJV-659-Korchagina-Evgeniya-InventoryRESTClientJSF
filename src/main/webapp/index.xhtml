@@ -21,11 +21,11 @@
             <div class="flex">
                 <h:form> 
                     <p:commandButton type="submit" value="#{info.signup}" 
-                                     action="login.xhtml" class="flex-item"/> 
+                                     action="#{loginController.goToLogin()}" class="flex-item"/> 
                 </h:form>           
                 <h:form> 
                     <p:commandButton type="submit" value="#{info.signin}" 
-                                     action="registration.xhtml" class="flex-item"/> 
+                                     action="#{signupController.goToRegistration()}" class="flex-item"/> 
                 </h:form>   
 
             </div> 

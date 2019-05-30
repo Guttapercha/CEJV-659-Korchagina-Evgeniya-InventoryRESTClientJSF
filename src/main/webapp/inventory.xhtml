@@ -17,9 +17,6 @@
         </h:head>
 
         <h:body>
-<!--            <div>
-                <img src = "resources/images/bg.jpg" class = "bg_img_list" id="list"/>
-            </div>   -->
             <h3>#{info.welcome}  #{user.firstname}  #{user.lastname}!</h3>
             <h2>#{info.list}</h2>
             <br></br><br></br>
@@ -28,10 +25,10 @@
                 <h:form id="form">
                     <p:dataTable value="#{inventoryController.findUserByEmail(user.email)}" var="inv"
                                  a:reflow="true" styleClass="list">
-                        <p:column headerText="#{info.album}">
+                        <p:column headerText="#{info.album}"  style="width:100px;">
                             <h:outputText value="#{inv.album}"/>
                         </p:column>
-                        <p:column headerText="#{info.artist}">
+                        <p:column headerText="#{info.artist}"  style="width:100px;">
                             <h:outputText value="#{inv.artist}"/>
                         </p:column >
                         <p:column headerText="#{info.year}"   style="width:30px;">
@@ -41,14 +38,14 @@
                             <h:outputText value="#{inv.state}"/>
                         </p:column>
                         <p:column headerText="#{info.details}">
-                            <h:outputText value="#{inv.state_detailed}"/>
+                            <h:outputText value="#{inventoryController.getDetails(inv.state)}"/>
                         </p:column>
                         <p:column headerText="#{info.notes}">
                             <h:outputText value="#{inv.notes}"/>
                         </p:column>
                         <p:column  style="width:80px;">
                             <p:commandButton type="submit" value="#{info.btn_update}"  
-                                             action="#{inventoryController.update(inv.id)}" 
+                                             action="#{inventoryController.update(inv, inv.id)}" 
                                              class="btn_table" style="background: blue; color: white;"/>
                         </p:column>
                         <p:column  style="width:80px;">
@@ -58,7 +55,7 @@
                         </p:column>
                     </p:dataTable>
                 </h:form>
-                <p:commandButton type="submit" value="#{info.btn_add}"  action="addRecord.xhtml" 
+                <p:commandButton type="submit" value="#{info.btn_add}"  action="#{inventoryController.add()}" 
                                  style="background: green; color:white;"/>
                 <br></br><br/>
                 <p:commandButton type="submit" value="#{info.btn_signout}"  action="#{inventoryController.signout()}" 

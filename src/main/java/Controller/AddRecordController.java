@@ -20,7 +20,9 @@ public class AddRecordController implements Serializable {
     private String ok = "";
     @Inject
     private InventoryController ic;
-      
+    @Inject
+    private Inventory i;
+
     private String validation = "";
     private String failed = "";
 
@@ -68,18 +70,31 @@ public class AddRecordController implements Serializable {
         return valid;
     }
 
-    public String create(Inventory inventory) throws Exception {
-//        InventoryController ic = new InventoryController();
-        if (!isValidData(inventory)) {
-            this.validation = "All fields except upc and notes are mandatory!";
-            this.failed = "Record not added!";
-            return null;
-        } else if (ic.create(inventory) == null ){
+    public void setToEmpty() {
+        i.setAlbum("");
+        i.setArtist("");
+        i.setYear(0);
+        i.setState("");
+        i.setState_detailed("");
+        i.setUpc("");
+        i.setNotes("");
+    }
+
+    public String create(Inventory inv) throws Exception {
+        
+        if (ic.create(inv) != null && isValidData(inv)) {
+            ic.create(inv);
+            this.ok = "Success!";
+            this.validation = "";
+            this.failed = "";
+            setToEmpty();
             return null;
         } else {
-            return "inventory";
+            this.ok = "";
+            this.validation = "All fields except upc and notes are mandatory!";
+            this.failed = "Record not added!";
         }
+        return null;
     }
-    
 
 }

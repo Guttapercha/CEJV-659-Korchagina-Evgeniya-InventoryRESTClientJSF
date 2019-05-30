@@ -9,6 +9,7 @@ import entities.Inventory;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
@@ -17,7 +18,7 @@ import javax.inject.Inject;
  * @author Evgeniya
  */
 @Named(value = "updateRecordController")
-@SessionScoped
+@RequestScoped
 public class UpdateRecordController implements Serializable {
 
     /**
