@@ -292,4 +292,5 @@ public class InventoryController implements Serializable {
         user.setEmail("");
         return "index";
     }
+    
 }
