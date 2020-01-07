@@ -66,7 +66,7 @@ public class LoginController implements Serializable {
     }
 
     /**
-     * Verifying credentials (email and passsword) based on db record data
+     * Verifying credentials (email and password) based on db record data
      */
     public String login(String email, String password) {
 
